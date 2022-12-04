@@ -26,11 +26,11 @@ public:
                                                                                                 // bounds, and checks if val is greater
                                                                                                 // so it can continue the path.
 
-        if (cache[r][c] != 0) { return cache[r][c]; }                // Checks cache to see if the current point already has its path
-                                                                     // calculated, if it does, return it to be added on to the DFS, 
-                                                                    // and ultimately be calculated in the longestIncreasingPath function. 
+        if (cache[r][c] != 0) { return cache[r][c]; }            // 2nd case: Checks cache to see if the current point already has its path
+                                                                 // calculated, if it does, return it to be added on to the DFS, 
+                                                                 // and ultimately be calculated in the longestIncreasingPath function. 
 
-        int maxPath = 1; 
+        int maxPath = 1;                                          // Path length can be at minimum 1. 
         maxPath = max(maxPath, 1 + DFS(matrix, cache, ROWS, COL, r+1, c, matrix[r][c]));  // Find max of Up direction (row + 1)
         maxPath = max(maxPath, 1 + DFS(matrix, cache, ROWS, COL, r-1, c, matrix[r][c]));  // Find max of Down direction (row - 1)
         maxPath = max(maxPath, 1 + DFS(matrix, cache, ROWS, COL, r, c+1, matrix[r][c]));  // Find max of Right direction (col + 1)
